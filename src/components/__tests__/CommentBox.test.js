@@ -24,9 +24,9 @@ afterEach(()=>{
 //   mount(<CommentBox />)
 // });
 
-it('shows a text area and a button', ()=>{
+it('shows a text area and two buttons', ()=>{
   expect(component.find('textarea').length).toEqual(1)
-  expect(component.find('button').length).toEqual(1)
+  expect(component.find('button').length).toEqual(2)
 
 })
 
