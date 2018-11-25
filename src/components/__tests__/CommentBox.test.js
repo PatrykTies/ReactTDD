@@ -1,5 +1,6 @@
 import React from 'react';
-import {mount} from 'enzyme'
+import {shallow,mount} from 'enzyme'
+import Root from 'Root'
 import CommentBox from 'components/CommentBox'
 
 //SHALLOW RENDER WILL THROW AN ERROR ON - event.preventDefault() inside CommentBox onSubmit
@@ -8,15 +9,20 @@ import CommentBox from 'components/CommentBox'
 let component;
 
 beforeEach(()=>{
-  component = mount(<CommentBox />)
+  //===========REDUX STORE ACCESS via Root==============
+  component = mount(
+    <Root>
+      <CommentBox />
+    </Root>
+  )
 })
 afterEach(()=>{
   component.unmount()
 })
 
-it('renders CommentBox without crashing', () => {
-  shallow(<CommentBox />)
-});
+// it('renders CommentBox without crashing', () => {
+//   mount(<CommentBox />)
+// });
 
 it('shows a text area and a button', ()=>{
   expect(component.find('textarea').length).toEqual(1)
